@@ -1,5 +1,5 @@
 {
-  "name": "vue-strapi-cyborg",
+  "name": "vue-firebase-cyborg",
   "version": "1.0.0",
   "description": "This project was created to demonstrate my abilities.",
   "private": true,
@@ -38,5 +38,5 @@
   },
   "keywords": [],
   "author": "Alexander Lyadov <milleystorm@gmail.com>",
-  "license": "ISC"
+  "license": "MIT"
 }
