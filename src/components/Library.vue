@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import Modal from '@/components/app/modal.vue'
+import Modal from '@/components/app/Modal.vue'
 import Dropdown from 'v-dropdown'
 import { mapGetters } from 'vuex'
 export default {
