@@ -2127,6 +2127,10 @@ html,
     display: inline-block;
   }
 
+  .md\:w-1\/2{
+    width: 50%;
+  }
+
   .md\:justify-start{
     justify-content: flex-start;
   }

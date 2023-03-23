@@ -9,7 +9,7 @@
         </div>
         <div class="mt-0 -mr-3 -ml-3 flex flex-wrap">
           <div
-            class="mt-0 max-w-full shrink-0 grow-0 basis-auto px-3 sm:w-1/2 lg:w-1/4"
+            class="mt-0 w-full max-w-full shrink-0 grow-0 basis-auto px-3 md:w-1/2 lg:w-1/4"
             v-for="game in games"
             :key="game.gameID"
           >

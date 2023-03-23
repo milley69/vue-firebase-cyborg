@@ -1,0 +1,1 @@
+.video__button-shape{fill:#212121;fill-opacity:.8}.video__button-icon{fill:#fff}.video__button:focus{outline:none}.video:hover .video__button-shape,.video__button:focus .video__button-shape{fill:red;fill-opacity:1}.video--enabled{cursor:pointer}.video--enabled .video__button{display:block}

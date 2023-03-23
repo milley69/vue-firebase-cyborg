@@ -41,5 +41,5 @@ npm, Node.js, Git, RestAPI, JsonAPI
 ## 🔗 Links
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://indevelopment.com/hehe/)
-[![github](https://img.shields.io/badge/github-22272e?style=for-the-badge&logo=github&logoColor=white)](https://www.linkedin.com/)
-[![vk](https://img.shields.io/badge/vk-1DA1F2?style=for-the-badge&logo=vk&logoColor=white)](https://vk.com/milleyz/)
+[![github](https://img.shields.io/badge/github-22272e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/milley69)
+[![vk](https://img.shields.io/badge/vk-1DA1F2?style=for-the-badge&logo=vk&logoColor=white)](https://vk.com/milleyz)
