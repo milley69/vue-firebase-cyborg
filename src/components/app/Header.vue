@@ -107,8 +107,7 @@ export default {
       links: [
         { title: 'Home', path: '/', class: true },
         { title: 'Browse', path: '/browse' },
-        // { title: 'Details', path: '/details' },
-        { title: 'Streams', path: '/streams' },
+        { title: 'Clips', path: '/clips' },
       ],
     }
   },

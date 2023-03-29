@@ -89,7 +89,7 @@
     </div>
 
     <button
-      class="mt-[1em] h-10 w-full cursor-pointer rounded-[40px] border-0 bg-white text-[1em] font-semibold text-primary-200 outline-none transition-all duration-300 hover:bg-primary-200 hover:text-white"
+      class="mt-[1em] h-10 w-full cursor-pointer rounded-[40px] border-0 !bg-white text-[1em] font-semibold text-primary-200 outline-none transition-all duration-300 hover:!bg-primary-200 hover:text-white"
       type="submit"
     >
       Register

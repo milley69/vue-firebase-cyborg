@@ -27,7 +27,7 @@ export default {
   },
   computed: { ...mapGetters(['getUser']) },
   mounted() {
-    this.username = this.getUser.info
+    this.username = this.getUser.info.username
   },
 }
 </script>

@@ -102,8 +102,9 @@
                 v-for="(img, index) in game.images.screenshot"
                 :key="index"
               >
-                <img :src="img" :alt="index" class="mx-auto mb-7/5 rounded-23px" />
+                <img :src="img" :alt="index" @click="openImage(img)" class="mx-auto mb-7/5 rounded-23px" />
               </div>
+              <ModalImage v-if="modal.open" :image="modal.image" :title="game.title" @close="modal.open = false" />
               <!--  -->
               <div class="mt-0 w-full max-w-full shrink-0 px-3 lg:grow-0 lg:basis-auto">
                 <p class="mb-0 text-[15px] leading-[30px] text-gray-66">
@@ -132,13 +133,16 @@
 </template>
 
 <script>
+import ModalImage from '@/components/app/ModalImage.vue'
 import DetailsRelated from '@/components/DetailsRelated.vue'
 import setupVideo from '@/utils/videoFrame.js'
 import { mapGetters } from 'vuex'
 export default {
-  components: { DetailsRelated },
+  props: ['close'],
+  components: { DetailsRelated, ModalImage },
   data() {
     return {
+      modal: { open: false, image: null },
       game: null,
       user: {
         games: {},
@@ -147,6 +151,11 @@ export default {
     }
   },
   methods: {
+    openImage(img) {
+      if (window.innerWidth < 992) return
+      this.modal.image = img
+      this.modal.open = true
+    },
     checkHasGame() {
       return !!Object.hasOwnProperty.call(this.user.games, this.game.gameID)
     },

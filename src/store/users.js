@@ -12,8 +12,9 @@ import { auth, database } from '../main'
 export default {
   state: {
     user: {
-      info: '',
-      games: [],
+      info: {},
+      games: {},
+      clips: [],
     },
   },
   mutations: {
@@ -22,14 +23,15 @@ export default {
     },
     clearUser(state) {
       state.user = {
-        info: '',
-        games: [],
+        info: {},
+        games: {},
+        clips: [],
       }
     },
   },
   getters: {
     getUser: (state) => state.user,
-    username: (state) => state.user.info,
+    username: (state) => state.user.info.username,
   },
   actions: {
     async fetchUser({ commit, dispatch }) {
@@ -38,8 +40,9 @@ export default {
         const uid = await dispatch('getUid')
         const user = (await get(child(refdb(database), `users/${uid}`))).val() || {}
         const userData = {
-          info: user.info.username || '',
-          games: user.games || [],
+          info: user.info || {},
+          games: user.games || {},
+          clips: user.clips || [],
         }
         commit('setUser', userData)
       } catch (error) {}
@@ -52,6 +55,7 @@ export default {
           setPersistence(auth, browserSessionPersistence).then(() => signInWithEmailAndPassword(auth, email, password))
         }
         await dispatch('fetchUser')
+        return true
         // window.open('http://localhost:4000/', '_self')
       } catch (error) {
         console.log(error.toString())

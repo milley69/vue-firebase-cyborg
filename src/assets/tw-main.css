@@ -52,6 +52,7 @@
   body {
     background: #1f2122;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
   }
 
   .menu-trigger {
@@ -125,7 +126,8 @@
   .main-border-button button {
     @apply relative overflow-hidden rounded-[25px] border border-solid border-primary-200 bg-transparent py-3 px-3 text-[14px] font-normal capitalize tracking-[0.5px] text-primary-200 transition-all duration-300 hover:border-white hover:bg-white;
   }
-  .border-no-active a {
+  .border-no-active a,
+  .border-no-active button {
     @apply cursor-not-allowed border-gray-66 text-gray-66 hover:border-gray-66 hover:bg-transparent hover:text-gray-66;
   }
   .tr-300 {

@@ -56,7 +56,7 @@
       </label>
     </div>
     <button
-      class="mt-[1em] h-10 w-full cursor-pointer rounded-[40px] border-0 bg-white text-[1em] font-semibold text-primary-200 outline-none transition-all duration-300 hover:bg-primary-200 hover:text-white"
+      class="mt-[1em] h-10 w-full cursor-pointer rounded-[40px] border-0 !bg-white text-[1em] font-semibold text-primary-200 outline-none transition-all duration-300 hover:!bg-primary-200 hover:text-white"
       type="submit"
     >
       Login
@@ -125,10 +125,10 @@ export default {
           await this.$store.dispatch('Login', userData)
           // window.open('http://localhost:4000/', '_self')
           // await this.$store.dispatch('fetchUser')
-          // this.$router.push('/')
+          this.$Toast('Success! You have successfully logged in', '#fff', '#ec6090')
+          this.$router.push('/')
 
           // console.log('qwe')
-          // this.$Toast('Success! You have successfully logged in', '#fff', '#ec6090')
         } catch (e) {}
       }
     },

@@ -25,16 +25,28 @@ const router = createRouter({
       component: () => import(/* webpackChunkName: "details" */ '../views/Details.vue'),
     },
     {
-      path: '/streams',
-      name: 'streams',
+      path: '/clips',
+      name: 'clips',
       meta: { layout: 'main' },
-      component: () => import(/* webpackChunkName: "streams" */ '../views/Streams.vue'),
+      component: () => import(/* webpackChunkName: "clips" */ '../views/Clips.vue'),
     },
     {
       path: '/profile',
       name: 'profile',
       meta: { layout: 'main', requiresAuth: true },
       component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      meta: { layout: 'main', requiresAuth: true },
+      component: () => import(/* webpackChunkName: "settings" */ '../components/app/Setting.vue'),
+    },
+    {
+      path: '/studio',
+      name: 'studio',
+      meta: { layout: 'main', requiresAuth: true },
+      component: () => import(/* webpackChunkName: "studio" */ '../views/Studio.vue'),
     },
     {
       path: '/login',

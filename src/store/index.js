@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import clips from './clips'
 import games from './games'
 import users from './users'
 
@@ -7,5 +8,5 @@ export default new Vuex.Store({
   mutations: {},
   getters: {},
   actions: {},
-  modules: { games, users },
+  modules: { games, users, clips },
 })
