@@ -53,17 +53,22 @@
                   </div>
                   <div
                     class="mt-0 w-full max-w-full px-3 sm:w-1/2 sm:grow-0 sm:basis-auto lg:w-1/4 lg:shrink-0"
-                    v-for="(clip, index) in user.clips"
+                    v-for="(clip, index) in clipsToShow"
                     :key="index"
                   >
                     <div class="mb-7/5 rounded-23px bg-secondary px-15px py-7/5">
-                      <div class="mb-15px">
+                      <div class="group relative mb-15px">
                         <img
                           :src="clip.poster"
-                          class="img-play relative rounded-23px"
+                          class="relative cursor-pointer rounded-23px"
                           :alt="clip.title"
                           @click="watchClip(clip.video)"
                         />
+                        <button
+                          class="absolute left-1/2 top-1/2 h-11 w-11 -translate-y-1/2 -translate-x-1/2 rounded-full bg-white text-primary-200 opacity-60 group-hover:opacity-100"
+                        >
+                          <i class="bx bx-md bx-play pl-[0.3rem] align-middle"></i>
+                        </button>
                       </div>
                       <div>
                         <h4 class="inline-block text-[15px] font-bold text-white">{{ clip.title }}</h4>
@@ -72,6 +77,11 @@
                           {{ clip.views }}
                         </span>
                       </div>
+                    </div>
+                  </div>
+                  <div class="mt-0 w-full max-w-full px-3 text-center sm:grow-0 sm:basis-auto lg:shrink-0">
+                    <div class="main-btn cursor-pointer" v-if="countClips < user.clips.length" @click="showMore">
+                      <button>Load More Clips</button>
                     </div>
                   </div>
                   <modal-clips v-if="modal.open" @close="modal = { open: false, clip: '' }" :video="modal.clip" />
@@ -88,23 +98,20 @@
 </template>
 
 <script>
-import ModalImage from '@/components/app/ModalImage.vue'
-
 import Library from '@/components/Library.vue'
 import ModalClips from '@/components/modals/ModalClips.vue'
-// import setupVideo from '@/utils/videoFrame.js'
 import { mapGetters } from 'vuex'
 export default {
   props: ['close'],
-  components: { ModalImage, Library, ModalClips },
+  components: { Library, ModalClips },
   data() {
     return {
       modal: { open: false, clip: '' },
       user: {
         info: {},
         games: {},
-        clips: [],
       },
+      countClips: 4,
       loader: true,
     }
   },
@@ -113,22 +120,24 @@ export default {
       this.modal.clip = clip
       this.modal.open = !this.modal.open
     },
+    showMore() {
+      this.countClips += 4
+    },
     // logOut() {
     //   this.$store.dispatch('logout')
     //   window.location.reload()
     // },
   },
   async mounted() {
-    // this.game = await this.$store.dispatch('fetchGameByID', this.$route.params.id)
     this.user = await this.getUser
+    // this.showMore()
     this.loader = false
-
-    // setTimeout(() => {
-    //   setupVideo(this.$refs.video)
-    // }, 0)
   },
   computed: {
     ...mapGetters(['getUser']),
+    clipsToShow() {
+      return this.user.clips.slice(0, this.countClips)
+    },
     gamesLength() {
       return JSON.stringify(this.user.games) === '{}' ? 0 : Object.keys(this.user.games).length
     },
@@ -153,8 +162,7 @@ $primary-background-color: #e75e8d;
 .video-js .vjs-menu-button .vjs-menu-content {
   background-color: $primary-background-color;
 }
-.img-play::after {
-  content: '';
+.img-play {
   position: absolute;
   left: 50%;
   top: 50%;

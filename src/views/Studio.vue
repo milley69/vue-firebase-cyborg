@@ -5,7 +5,7 @@
       Please do not reload the page until the upload is completed
     </h1>
   </section>
-  <section v-else>
+  <section v-show="!loader">
     <div class="">
       <h1 class="text-2xl font-bold">Hello {{ user.info.username }}</h1>
       <p class="text-[15px] leading-[30px] text-gray-66">Here you can upload your clip.</p>
@@ -77,11 +77,11 @@ export default {
         return
       }
       this.clip.title = ''
-      console.log('this.$refs.preview: ', this.$refs.preview)
+      this.$Toast(`Your clip has been uploaded successfully`)
+      this.user = await this.getUser
+      this.loader = false
       this.$refs.preview.remove()
       this.$refs.video.remove()
-      this.$Toast(`Your clip has been uploaded successfully`)
-      this.loader = false
     },
     previewReady(data) {
       this.clip.preview = data

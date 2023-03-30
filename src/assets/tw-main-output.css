@@ -963,6 +963,10 @@ video {
   height: 100vh;
 }
 
+.h-11{
+  height: 2.75rem;
+}
+
 .min-h-\[18rem\]{
   min-height: 18rem;
 }
@@ -1047,6 +1051,10 @@ video {
   width: 100%;
 }
 
+.w-11{
+  width: 2.75rem;
+}
+
 .max-w-\[30px\]{
   max-width: 30px;
 }
@@ -1123,10 +1131,6 @@ video {
   cursor: pointer;
 }
 
-.flex-row{
-  flex-direction: row;
-}
-
 .flex-col{
   flex-direction: column;
 }
@@ -1171,12 +1175,12 @@ video {
   gap: 0.75rem;
 }
 
-.gap-\[5px\]{
-  gap: 5px;
-}
-
 .gap-8{
   gap: 2rem;
+}
+
+.gap-\[5px\]{
+  gap: 5px;
 }
 
 .overflow-hidden{
@@ -1375,6 +1379,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-red-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-80{
   --tw-bg-opacity: 0.8;
 }
@@ -1385,6 +1394,10 @@ video {
 
 .bg-opacity-\[0\.041\]{
   --tw-bg-opacity: 0.041;
+}
+
+.bg-opacity-60{
+  --tw-bg-opacity: 0.6;
 }
 
 .bg-bg-auth{
@@ -1531,6 +1544,11 @@ video {
   padding-bottom: 2rem;
 }
 
+.py-9{
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+
 .py-\[10px\]{
   padding-top: 10px;
   padding-bottom: 10px;
@@ -1544,11 +1562,6 @@ video {
 .py-\[1em\]{
   padding-top: 1em;
   padding-bottom: 1em;
-}
-
-.py-9{
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
 }
 
 .pb-5{
@@ -1623,6 +1636,10 @@ video {
   padding-top: 7px;
 }
 
+.pl-\[0\.3rem\]{
+  padding-left: 0.3rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -1692,6 +1709,11 @@ video {
   font-size: 45px;
 }
 
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1699,11 +1721,6 @@ video {
 
 .text-xl{
   font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-lg{
-  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -1809,6 +1826,10 @@ video {
 
 .opacity-0{
   opacity: 0;
+}
+
+.opacity-60{
+  opacity: 0.6;
 }
 
 .shadow-\[4px_4px_30px__rgba\(0\2c 0\2c 0\2c 0\.2\)\]{
@@ -2193,6 +2214,10 @@ html,
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-opacity-100:hover{
+  --tw-bg-opacity: 1;
+}
+
 .hover\:text-primary-200:hover{
   --tw-text-opacity: 1;
   color: rgb(231 94 141 / var(--tw-text-opacity));
@@ -2243,6 +2268,10 @@ html,
 
 .group:hover .group-hover\:bottom-15px{
   bottom: 15px;
+}
+
+.group:hover .group-hover\:bg-opacity-100{
+  --tw-bg-opacity: 1;
 }
 
 .group\/item:hover .group-hover\/item\:text-primary-200{

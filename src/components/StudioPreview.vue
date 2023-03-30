@@ -77,15 +77,18 @@ export default {
     }
   },
   methods: {
-    remove() {
+    remove(fullRemove = true) {
       this.$refs.preview.value = ''
-      this.clip.preview = { file: '', base: '' }
-      this.imgSrc = ''
-      this.$emit('file', this.clip.preview)
+      if (fullRemove) {
+        this.imgSrc = ''
+        this.clip.preview = { file: '', base: '' }
+        this.$emit('file', this.clip.preview)
+      }
     },
     cropImage() {
       this.clip.preview.base = this.$refs.cropper.getCroppedCanvas().toDataURL()
       this.$emit('file', this.clip.preview)
+      this.remove(false)
     },
     previewChanged(e) {
       const file = e.target.files[0]

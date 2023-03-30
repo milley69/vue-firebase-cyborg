@@ -45,9 +45,8 @@ export default {
   methods: {
     remove(fullRemove = true) {
       this.$refs.video.value = ''
-      this.clip.video = ''
-      // FIXME:
       if (fullRemove) {
+        this.clip.video = ''
         this.$emit('file', this.clip.video)
       }
     },

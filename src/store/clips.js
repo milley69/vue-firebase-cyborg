@@ -33,6 +33,7 @@ export default {
           video: linkToVideo,
           views: Math.floor((Date.now() % 50) * 9),
         })
+        await dispatch('fetchUser')
         return true
       } catch (error) {
         console.log(error)
