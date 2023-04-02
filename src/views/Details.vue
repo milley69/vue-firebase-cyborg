@@ -133,8 +133,8 @@
 </template>
 
 <script>
-import ModalImage from '@/components/app/ModalImage.vue'
 import DetailsRelated from '@/components/DetailsRelated.vue'
+import ModalImage from '@/components/modals/ModalImage.vue'
 import setupVideo from '@/utils/videoFrame.js'
 import { mapGetters } from 'vuex'
 export default {

@@ -10,7 +10,7 @@
       <h1 class="text-2xl font-bold">Hello {{ user.info.username }}</h1>
       <p class="text-[15px] leading-[30px] text-gray-66">Here you can upload your clip.</p>
     </div>
-    <form class="mt-5" @submit.prevent="uploadVideo">
+    <form class="mt-5" @submit.prevent="uploadClips">
       <div class="relative">
         <input
           v-model="clip.title"
@@ -62,7 +62,7 @@ export default {
     }
   },
   methods: {
-    async uploadVideo() {
+    async uploadClips() {
       const clipData = {
         title: this.clip.title,
         preview: this.clip.preview,
@@ -70,7 +70,7 @@ export default {
         lengthClips: this.user.clips.length,
       }
       this.loader = true
-      const ready = await this.$store.dispatch('uploadVideo', clipData)
+      const ready = await this.$store.dispatch('uploadClips', clipData)
       if (ready !== true) {
         this.$ToastEr(`${ready}`, '#ec6090')
         this.loader = false

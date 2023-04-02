@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import Modal from '@/components/app/ModalAgree.vue'
+import Modal from '@/components/modals/ModalAgree.vue'
 import Dropdown from 'v-dropdown'
 import { mapGetters } from 'vuex'
 export default {
@@ -123,6 +123,11 @@ export default {
   },
   async mounted() {
     this.games = await this.$store.dispatch('fetchGames')
+    if (!!this.$route.params.id) {
+      this.user = await this.$store.dispatch('getUserFromDB', this.$route.params.id)
+      this.loader = false
+      return
+    }
     this.user.games = await this.getUser.games
     this.loader = false
   },

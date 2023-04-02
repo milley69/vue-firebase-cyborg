@@ -7,7 +7,7 @@ export default {
   mutations: {},
   getters: {},
   actions: {
-    async uploadVideo({ dispatch, commit }, clipData) {
+    async uploadClips({ dispatch, commit }, clipData) {
       try {
         if (!(!!clipData.title && !!clipData.preview.file && !!clipData.preview.base && !!clipData.video)) {
           return 'Invalid'

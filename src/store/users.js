@@ -6,8 +6,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
-import { child, get, ref as refdb, set } from 'firebase/database'
-import { auth, database } from '../main'
+import { child, get, ref as refDb, set, update } from 'firebase/database'
+import { getDownloadURL, ref as refSt, uploadBytes } from 'firebase/storage'
+import { auth, database, storage } from '../main'
 
 export default {
   state: {
@@ -32,13 +33,23 @@ export default {
   getters: {
     getUser: (state) => state.user,
     username: (state) => state.user.info.username,
+    getUsersGames: (state) => state.user.games,
   },
   actions: {
+    async getUserFromDB({ commit, getters }, id) {
+      try {
+        const userFromDB = (await get(child(refDb(database), 'users/'))).val() || {}
+        const userArray = Object.values(userFromDB)
+        return userArray.find((user) => user.info.username === id)
+      } catch (error) {
+        console.log('error: ', error)
+      }
+    },
     async fetchUser({ commit, dispatch }) {
       try {
         commit('clearUser')
         const uid = await dispatch('getUid')
-        const user = (await get(child(refdb(database), `users/${uid}`))).val() || {}
+        const user = (await get(child(refDb(database), `users/${uid}`))).val() || {}
         const userData = {
           info: user.info || {},
           games: user.games || {},
@@ -66,10 +77,41 @@ export default {
         await createUserWithEmailAndPassword(auth, email, password)
         const uid = await dispatch('getUid')
         if (uid) {
-          await set(refdb(database, `/users/${uid}/info`), { username })
+          await set(refDb(database, `/users/${uid}/info`), {
+            username,
+            about: '',
+            avatar:
+              'https://firebasestorage.googleapis.com/v0/b/cyborg-milley.appspot.com/o/cyborg_pre.png?alt=media&token=62f35514-984d-4537-887e-1e7a8adb5a2b',
+          })
         }
       } catch (error) {
         console.log(error.toString())
+      }
+    },
+    async updateUserInfo({ dispatch, state }, userData) {
+      try {
+        const uid = await dispatch('getUid')
+        if (!uid) return 'smth wrong with uid'
+
+        const userInfo = state.user.info
+        const updateData = {}
+
+        if (userData.avatar) {
+          const storageReference = refSt(storage, `/Users/${uid}/avatar`)
+          await uploadBytes(storageReference, userData.avatar)
+          const linkToAvatar = await getDownloadURL(storageReference)
+          updateData['avatar'] = linkToAvatar
+        }
+
+        updateData['username'] = userData.username !== userInfo.username ? userData.username : userInfo.username
+        updateData['about'] = userData.about !== userInfo.about ? userData.about : userInfo.about
+
+        await update(child(refDb(database), `/users/${uid}/info`), updateData)
+        await dispatch('fetchUser')
+        return true
+      } catch (error) {
+        console.log(error)
+        return error.message
       }
     },
 

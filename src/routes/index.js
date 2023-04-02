@@ -37,10 +37,10 @@ const router = createRouter({
       component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
     },
     {
-      path: '/settings',
-      name: 'settings',
-      meta: { layout: 'main', requiresAuth: true },
-      component: () => import(/* webpackChunkName: "settings" */ '../components/app/Setting.vue'),
+      path: '/profile/:id',
+      name: 'profileEach',
+      meta: { layout: 'main' },
+      component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
     },
     {
       path: '/studio',
@@ -59,6 +59,16 @@ const router = createRouter({
       name: 'register',
       meta: { layout: 'auth' },
       component: () => import(/* webpackChunkName: "register" */ '../views/Register.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import(/* webpackChunkName: "register" */ '../views/NotFound.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'bad-not-found',
+      component: () => import(/* webpackChunkName: "register" */ '../views/NotFound.vue'),
     },
   ],
 })
